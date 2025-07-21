@@ -12,5 +12,16 @@ file(GLOB SOURCES
     src/*.cpp
 )
 
+# Find OpenMP
+find_package(OpenMP REQUIRED)
+
+# Find OpenSSL
+find_package(OpenSSL REQUIRED)
+
 # Create the executable
+
 add_executable(my_openmp_project ${SOURCES})
+target_link_libraries(my_openmp_project PRIVATE OpenMP::OpenMP_CXX OpenSSL::SSL OpenSSL::Crypto)
+
+find_package(OpenMP REQUIRED)
+target_link_libraries(my_openmp_project PRIVATE OpenMP::OpenMP_CXX)
